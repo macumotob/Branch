@@ -1,4 +1,4 @@
-namespace BranchLike.Api.Models;
+namespace _7E.Branch.Models;
 public class LinkClick
 {
     public Guid Id { get; set; } = Guid.NewGuid();
