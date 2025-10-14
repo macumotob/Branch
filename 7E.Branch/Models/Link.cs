@@ -9,5 +9,5 @@ public class Link
     public string? MetadataJson { get; set; }
     public string? ControlParamsJson { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-    public long ClickCount { get; set; } = 0;
+    public long click_count { get; set; } = 0;
 }

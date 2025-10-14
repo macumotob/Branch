@@ -33,7 +33,7 @@ Dictionary<string, string>? ControlParams
         ShortUrl: Combine(baseUrl, $"r/{link.ShortCode}"),
         ShortCode: link.ShortCode,
         LongUrl: link.LongUrl,
-        Clicks: link.ClickCount,
+        Clicks: link.click_count,
         CreatedAt: link.CreatedAt,
         Title: link.Title,
         Description: link.Description,

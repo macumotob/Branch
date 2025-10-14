@@ -60,7 +60,7 @@ public class RedirectController : ControllerBase
         await _db.LinkClicks.AddAsync(click, ct);
 
 
-        link.ClickCount++;
+        link.click_count++;
         await _db.SaveChangesAsync(ct);
 
 
