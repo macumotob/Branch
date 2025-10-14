@@ -1,7 +1,7 @@
 namespace _7E.Branch.Models;
 public class Link
 {
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public string Id { get; set; } 
     public string ShortCode { get; set; } = null!;
     public string LongUrl { get; set; } = null!;
     public string? Title { get; set; }

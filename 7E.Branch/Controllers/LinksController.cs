@@ -6,6 +6,7 @@ using _7E.Branch.Utils;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Text.Json;
+using _7E.Branch.Helpers;
 
 
 namespace BranchLike.Api.Controllers;
@@ -74,6 +75,7 @@ public class LinksController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> List([FromQuery] int skip = 0, [FromQuery] int take = 50, CancellationToken ct = default)
     {
+        return LinkHelper.Get(take, skip);
         take = Math.Clamp(take <= 0 ? 50 : take, 1, 200);
         var items = await _db.Links
         .OrderByDescending(x => x.CreatedAt)

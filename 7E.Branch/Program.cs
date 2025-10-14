@@ -37,6 +37,7 @@
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
 using BranchLike.Api;
+using _7E.Branch.Helpers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,6 +55,8 @@ builder.Services.Configure<ForwardedHeadersOptions>(opts =>
     opts.KnownProxies.Clear();
 });
 
+var cnns = builder.Configuration.GetConnectionString("Default")!;
+DB.use(cnns);
 
 builder.Services.AddDbContext<AppDb>(options =>
 {
