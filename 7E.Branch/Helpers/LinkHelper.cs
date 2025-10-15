@@ -36,4 +36,32 @@ public static class LinkHelper
             return Result.Success(list);
         });
     }
+    private static void SetCommandParameters(MySqlCommand cmd,Link item)
+    {
+        cmd.Parameters.AddWithValue("@p_id", item.Id);
+        cmd.Parameters.AddWithValue("@p_shortcode", item.ShortCode);
+        cmd.Parameters.AddWithValue("@p_longurl", item.LongUrl);
+        cmd.Parameters.AddWithValue("@p_title", item.Title ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@p_description", item.Description ?? (object)DBNull.Value);
+        cmd.Parameters.AddWithValue("@p_metadata_json", string.IsNullOrEmpty(item.MetadataJson) ? DBNull.Value : item.MetadataJson);
+        cmd.Parameters.AddWithValue("@p_control_params_json", string.IsNullOrEmpty(item.ControlParamsJson) 
+            ? DBNull.Value : item.ControlParamsJson);
+    }
+
+    public static Result Create(Link item)
+    {
+        return DB.Execute((cnn, cmd) =>
+        {
+            cmd.CommandText = "sp_upsert_link";
+            cmd.CommandType = System.Data.CommandType.StoredProcedure;
+            SetCommandParameters(cmd,item);
+            var affected = cmd.ExecuteNonQuery();
+            if (affected > 0)
+            {
+                return Result.Success(item);
+            }
+            return Result.Error("Failed to create link");
+        });
+    }
+
 }

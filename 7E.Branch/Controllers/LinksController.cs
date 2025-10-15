@@ -63,6 +63,7 @@ public class LinksController : ControllerBase
             ControlParamsJson = input.ControlParams is null ? null : JsonSerializer.Serialize(input.ControlParams)
         };
 
+        return LinkHelper.Create(link);
 
         await _db.Links.AddAsync(link, ct);
         await _db.SaveChangesAsync(ct);
