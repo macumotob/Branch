@@ -55,6 +55,7 @@ public class LinksController : ControllerBase
 
         var link = new Link
         {
+            Id = Guid.NewGuid().ToString(),
             ShortCode = shortCode,
             LongUrl = input.LongUrl,
             Title = input.Title,

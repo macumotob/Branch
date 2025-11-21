@@ -39,6 +39,12 @@ using Microsoft.EntityFrameworkCore;
 using BranchLike.Api;
 using _7E.Branch.Helpers;
 
+//var configuration = new ConfigurationBuilder()
+//            .SetBasePath(AppDomain.CurrentDomain.BaseDirectory) // Устанавливаем базовый путь
+//            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true) // Чтение из файла
+//            .Build();
+
+//var len = configuration["Test:Vasyl:test"];
 
 var builder = WebApplication.CreateBuilder(args);
 

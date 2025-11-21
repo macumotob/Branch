@@ -20,7 +20,7 @@ public class RedirectController : ControllerBase
     }
 
 
-    [HttpGet("r/{code}")]
+    [HttpGet("templates/{code}")]
     public async Task<IActionResult> RedirectByCode(string code, CancellationToken ct)
     {
         var link = await _db.Links.FirstOrDefaultAsync(x => x.ShortCode == code, ct);
